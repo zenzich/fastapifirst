@@ -3,7 +3,7 @@ from models import Book
 
 router = APIRouter(prefix="/books", tags=["Books"])
 
-books = [None]
+books = []
 
 @router.get('/')
 def get_all():
@@ -18,6 +18,8 @@ def post_book(book: Book):
         "title": book.title,
         "text": book.text,
     }
+
+    books.append(new_book)
 
     return {
         "data": new_book
