@@ -1,5 +1,5 @@
 from fastapi import APIRouter
-from models import Book
+from schemas.book import BookCreate
 
 router = APIRouter(prefix="/books", tags=["Books"])
 
@@ -12,7 +12,7 @@ def get_all():
     }
 
 @router.post('/')
-def post_book(book: Book):
+def post_book(book: BookCreate):
     new_book = {
         "user": '',
         "title": book.title,
